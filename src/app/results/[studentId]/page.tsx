@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ArrowLeft, Printer, AlertTriangle } from "lucide-react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getStoredUsers } from "@/lib/user-store";
+import { getStoredUsers, findUser } from "@/lib/user-store";
 import { getStoredResults, type ExamResult } from "@/lib/exam-store";
 
 
@@ -24,16 +24,35 @@ type MarksheetData = {
 export default function ResultPage() {
     const params = useParams();
     const router = useRouter();
+    const searchParams = useSearchParams();
     const studentId = params.studentId as string;
+    const studentClass = searchParams.get('class');
+    const studentSection = searchParams.get('section');
+    
     const [studentResult, setStudentResult] = useState<MarksheetData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [noResultFound, setNoResultFound] = useState(false);
 
     useEffect(() => {
-        if (!studentId) return;
+        if (!studentId || !studentClass || !studentSection) {
+            setIsLoading(false);
+            // If class/section are missing, we can't do a specific lookup.
+            // This can happen if the user navigates here directly.
+            // For now, we'll show a generic error or prompt for more info.
+            // To keep it simple, we'll guide them back.
+             const allUsers = getStoredUsers();
+             const usersWithRoll = allUsers.filter(u => u.rollNumber === studentId);
+             if (usersWithRoll.length === 0) {
+                setNoResultFound(true);
+             } else {
+                // Multiple students found, can't determine which one.
+                // A better UI would let them select. For now, show error.
+                setNoResultFound(true);
+             }
+             return;
+        }
 
-        const allUsers = getStoredUsers();
-        const userForMarksheet = allUsers.find(u => u.rollNumber === studentId);
+        const userForMarksheet = findUser(studentId, studentClass, studentSection);
         
         if (userForMarksheet) {
             const allResults = getStoredResults();
@@ -68,7 +87,7 @@ export default function ResultPage() {
             setNoResultFound(true);
         }
         setIsLoading(false);
-    }, [studentId]);
+    }, [studentId, studentClass, studentSection]);
     
     const handlePrint = () => {
         window.print();
@@ -86,7 +105,7 @@ export default function ResultPage() {
                         <AlertTriangle className="h-4 w-4" />
                         <AlertTitle>No Result Found</AlertTitle>
                         <AlertDescription>
-                           Results for this student have not been found. This may be because the exam hasn't been attempted yet or the results are not published for their class.
+                           A result for the specified student (Roll No: {studentId}, Class: {studentClass}, Section: {studentSection}) could not be found. Please check the details and try again.
                         </AlertDescription>
                     </Alert>
                      <Button asChild className="mt-4" onClick={() => router.back()}>

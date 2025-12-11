@@ -52,7 +52,8 @@ export default function ResultSearchForm() {
         title: "Student Found",
         description: `Redirecting to the results page for ${user.name}.`,
       });
-      router.push(`/results/${user.rollNumber}`);
+      // Pass class and section in the query params for a more specific lookup
+      router.push(`/results/${user.rollNumber}?class=${user.class}&section=${user.section}`);
     } else {
       toast({
         variant: "destructive",
@@ -115,7 +116,7 @@ export default function ResultSearchForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {["Daffodils", "Daisies"].map((s) => (
+                  {["Daffodils", "Daisies", "A"].map((s) => (
                     <SelectItem key={s} value={s}>
                       {s}
                     </SelectItem>
