@@ -115,7 +115,7 @@ export default function FacultyDashboard() {
                                     </TableHeader>
                                     <TableBody>
                                       {groupedStudents[className][section].map(student => (
-                                        <TableRow key={student.rollNumber}>
+                                        <TableRow key={`${student.rollNumber}-${student.name}`}>
                                           <TableCell className="font-medium">{student.rollNumber}</TableCell>
                                           <TableCell>{student.name}</TableCell>
                                         </TableRow>
