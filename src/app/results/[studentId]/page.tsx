@@ -7,7 +7,7 @@ import { ArrowLeft, Printer, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getStoredUsers, findUser } from "@/lib/user-store";
+import { findUser } from "@/lib/user-store";
 import { getStoredResults, type ExamResult } from "@/lib/exam-store";
 
 
@@ -31,25 +31,13 @@ export default function ResultPage() {
     
     const [studentResult, setStudentResult] = useState<MarksheetData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [noResultFound, setNoResultFound] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if (!studentId || !studentClass || !studentSection) {
+            setError(`Invalid URL. Please go back and search for a student.`);
             setIsLoading(false);
-            // If class/section are missing, we can't do a specific lookup.
-            // This can happen if the user navigates here directly.
-            // For now, we'll show a generic error or prompt for more info.
-            // To keep it simple, we'll guide them back.
-             const allUsers = getStoredUsers();
-             const usersWithRoll = allUsers.filter(u => u.rollNumber === studentId);
-             if (usersWithRoll.length === 0) {
-                setNoResultFound(true);
-             } else {
-                // Multiple students found, can't determine which one.
-                // A better UI would let them select. For now, show error.
-                setNoResultFound(true);
-             }
-             return;
+            return;
         }
 
         const userForMarksheet = findUser(studentId, studentClass, studentSection);
@@ -78,13 +66,13 @@ export default function ResultPage() {
                         },
                     });
                 } else {
-                    setNoResultFound(true);
+                    setError(`No exam result found for ${userForMarksheet.name} (Roll No: ${studentId}).`);
                 }
             } else {
-                 setNoResultFound(true);
+                 setError(`No result data found for Roll No: ${studentId}.`);
             }
         } else {
-            setNoResultFound(true);
+            setError(`A student with Roll No: ${studentId}, Class: ${studentClass}, Section: ${studentSection} could not be found.`);
         }
         setIsLoading(false);
     }, [studentId, studentClass, studentSection]);
@@ -97,15 +85,15 @@ export default function ResultPage() {
         return <div className="flex h-screen items-center justify-center"><p>Loading results...</p></div>
     }
 
-    if (noResultFound) {
+    if (error) {
         return (
              <div className="flex h-screen items-center justify-center text-center">
                 <div>
                     <Alert variant="destructive" className="max-w-md">
                         <AlertTriangle className="h-4 w-4" />
-                        <AlertTitle>No Result Found</AlertTitle>
+                        <AlertTitle>Result Not Found</AlertTitle>
                         <AlertDescription>
-                           A result for the specified student (Roll No: {studentId}, Class: {studentClass}, Section: {studentSection}) could not be found. Please check the details and try again.
+                           {error} Please check the details and try again.
                         </AlertDescription>
                     </Alert>
                      <Button asChild className="mt-4" onClick={() => router.back()}>
@@ -118,7 +106,7 @@ export default function ResultPage() {
 
     if (!studentResult) {
         // This case should ideally not be reached if the logic above is correct
-        return <div className="flex h-screen items-center justify-center"><p>An unexpected error occurred.</p></div>
+        return <div className="flex h-screen items-center justify-center"><p>An unexpected error occurred while loading the marksheet.</p></div>
     }
 
     const obtainedTotal = (studentResult.marks.robotics >= 0 ? studentResult.marks.robotics : 0) + (studentResult.marks.coding >= 0 ? studentResult.marks.coding : 0);
@@ -160,3 +148,5 @@ export default function ResultPage() {
         </div>
     )
 }
+
+    
