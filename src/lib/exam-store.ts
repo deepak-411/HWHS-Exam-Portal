@@ -90,7 +90,6 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '15': { '2': { robotics: 48, coding: 0 } }, // Keren Daniel Class 8 Daffodils
     '19': { '2': { robotics: 27, coding: 0 } }, // MUJTABAKHAN Class 8 Daffodils
     '24': { '2': { robotics: 24, coding: 0 } }, // piyu.sirohi Class 8 Daffodils
-    '10': { '2': { robotics: 45, coding: 0 } }, // dimple.shekhawat Class 8 Daffodils
     '5': { '2': { robotics: 24, coding: 0 } }, // ARNAV PANSARE Class 8 Daffodils
     '31': { '2': { robotics: 21, coding: 0 } }, // subhransu sahoo Class 8 Daffodils
     '13': { '2': { robotics: 27, coding: 0 } }, // janvi Singh Class 8 Daffodils
@@ -136,6 +135,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '30': { '1': { robotics: 37, coding: 0 } }, // Vihaan Dudani Class 7 Daffodils
     '20': { '1': { robotics: 27, coding: 0 } }, // sai parkar Class 7 Daffodils
     '2': { '1': { robotics: 8, coding: 0 } }, // AALIYA ANSARI Class 7 Daffodils
+    '18': { '1': { robotics: 25, coding: 0 } }, // Rishita Singh
 };
 
 export function storeExam(exam: ScheduledExam) {

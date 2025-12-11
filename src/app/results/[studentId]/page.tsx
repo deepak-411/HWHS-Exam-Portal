@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getStoredUsers } from "@/lib/user-store";
-import { getStoredExams, getResultForStudent, type ExamResult } from "@/lib/exam-store";
+import { getStoredResults, type ExamResult } from "@/lib/exam-store";
 
 
 type MarksheetData = {
@@ -36,20 +36,22 @@ export default function ResultPage() {
         const userForMarksheet = allUsers.find(u => u.rollNumber === studentId);
         
         if (userForMarksheet) {
-            const allExams = getStoredExams();
-            // Find an exam that matches the student's class and section
-            const examForStudent = allExams.find(e => e.selectedClass === userForMarksheet.class && e.selectedSection === userForMarksheet.section);
-
-            if (examForStudent) {
-                 const result = getResultForStudent(userForMarksheet.rollNumber, examForStudent.selectedSet);
-
-                if (result) {
+            const allResults = getStoredResults();
+            const studentResults = allResults[userForMarksheet.rollNumber];
+            
+            if (studentResults) {
+                // Find the first available result for the student
+                const availableExamIds = Object.keys(studentResults);
+                if (availableExamIds.length > 0) {
+                    const firstExamId = availableExamIds[0];
+                    const result = studentResults[firstExamId];
+                    
                     setStudentResult({
                         name: userForMarksheet.name,
                         rollNumber: userForMarksheet.rollNumber,
                         class: userForMarksheet.class,
                         section: userForMarksheet.section,
-                        exam: "Robotics and AI Examination 2025",
+                        exam: `Robotics and AI Examination 2025 (Set ${firstExamId})`,
                         marks: result,
                         totalMarks: {
                             robotics: 80,
@@ -57,7 +59,7 @@ export default function ResultPage() {
                         },
                     });
                 } else {
-                     setNoResultFound(true);
+                    setNoResultFound(true);
                 }
             } else {
                  setNoResultFound(true);

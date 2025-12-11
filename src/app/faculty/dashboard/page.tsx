@@ -7,7 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { BookCopy, Users, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { getStoredUsers, type User } from "@/lib/user-store";
-import { getStoredExams, getStoredResults, type ExamResult } from "@/lib/exam-store";
+import { getStoredResults, type ExamResult } from "@/lib/exam-store";
 
 type GroupedStudents = {
   [className: string]: {
@@ -37,14 +37,7 @@ export default function FacultyDashboard() {
   const getStudentResult = (student: User): ExamResult | null => {
     const studentResults = allResults[student.rollNumber];
     if (studentResults) {
-      // Since a student can have results for multiple exams, we need to find the one relevant to their class.
-      const studentClassExams = getStoredExams().filter(e => e.selectedClass === student.class && e.selectedSection === student.section);
-      for(const exam of studentClassExams) {
-         if (studentResults[exam.selectedSet]) {
-             return studentResults[exam.selectedSet];
-         }
-      }
-      // If no specific class exam found, return the first available one as a fallback
+      // Return the first available result for the student
       const examIds = Object.keys(studentResults);
       if (examIds.length > 0) {
         return studentResults[examIds[0]];
