@@ -22,7 +22,7 @@ const DEFAULT_USERS: User[] = [
   { name: 'kshitij gopal tapare', rollNumber: '16', class: '6', section: 'Daffodils' },
   { name: 'MANEET TALAMPALLI', rollNumber: '17', class: '6', section: 'Daffodils' },
   { name: 'Mishti Malviya', rollNumber: '19', class: '6', section: 'Daffodils' },
-  { name: 'nirved nilesh bhoir', rollNumber: '19', class: '6', section: 'Daffodils' },
+  { name: 'nirved nilesh bhoir', rollNumber: '19', class: '6', section: 'Daffodils' }, // Duplicate Roll No.
   { name: 'raj santosh gondhale', rollNumber: '22', class: '6', section: 'Daffodils' },
   { name: 'Reva.Borate', rollNumber: '24', class: '6', section: 'Daffodils' },
   { name: 'rudraunsh agawane', rollNumber: '25', class: '6', section: 'Daffodils' },
@@ -141,8 +141,27 @@ const DEFAULT_USERS: User[] = [
 // --- User Management ---
 
 export function getStoredUsers(): User[] {
-  // In a real app, this would merge localStorage with default users.
-  // For this project, we will just use the default list to ensure consistency.
+  if (typeof window !== 'undefined') {
+    const stored = window.localStorage.getItem(USERS_STORAGE_KEY);
+    // If local storage is empty, initialize with default users
+    if (!stored) {
+      window.localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(DEFAULT_USERS));
+      return DEFAULT_USERS;
+    }
+    // Otherwise, parse the stored users
+    try {
+      const parsedUsers = JSON.parse(stored);
+      // A simple check to see if it's an array, could be more robust
+      if(Array.isArray(parsedUsers)) {
+        // Here you could merge default and stored users if needed,
+        // but for now, we'll just return what's in storage.
+        return parsedUsers;
+      }
+    } catch (e) {
+      // If parsing fails, fall back to default
+      return DEFAULT_USERS;
+    }
+  }
   return DEFAULT_USERS;
 }
 
@@ -154,10 +173,8 @@ export function storeNewUser(user: User): boolean {
     if (userExists) {
         return false; // Indicate that user was not added
     }
-    // Note: This will not persist across reloads as we are not using localStorage anymore.
-    // This is just for runtime for now.
     users.push(user);
-    // window.localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+    window.localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
     return true; // Indicate success
   }
   return false;
@@ -197,3 +214,5 @@ export function clearCurrentUser() {
         window.localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
     }
 }
+
+    

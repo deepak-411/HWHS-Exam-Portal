@@ -141,7 +141,7 @@ export default function FacultyDashboard() {
                                             <TableCell className="text-center font-medium">{result ? (result.coding === -1 ? 'Pending' : `${result.coding}`) : 'N/A'}</TableCell>
                                             <TableCell className="text-right">
                                               <Button variant="outline" size="sm" asChild>
-                                                <Link href={`/results/${student.rollNumber}`}>
+                                                <Link href={`/results/${student.rollNumber}?class=${student.class}&section=${student.section}`}>
                                                   View Marksheet
                                                   <ExternalLink className="ml-2 h-4 w-4" />
                                                 </Link>
@@ -167,3 +167,5 @@ export default function FacultyDashboard() {
     </div>
   )
 }
+
+    

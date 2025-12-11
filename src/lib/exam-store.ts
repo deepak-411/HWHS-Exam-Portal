@@ -54,101 +54,101 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
 
     // Class 7 - Daffodils - Set 1
     '01': { '1': { robotics: 40, coding: 0 } }, // Aadya Amit Wani
-    // '2': { '1': { robotics: 8, coding: 0 } }, // AALIYA ANSARI - roll number exists in another class
+    '2': { '1': { robotics: 8, coding: 0 } }, // AALIYA ANSARI
     '3': { '1': { robotics: 32, coding: 0 } }, // Aastha lokhande
     '4': { '1': { robotics: 16, coding: 0 } }, // Aayansh jha
-    // '7': { '1': { robotics: 27, coding: 0 } }, // arpit randive
+    '7': { '1': { robotics: 27, coding: 0 } }, // arpit randive
     '8': { '1': { robotics: 29, coding: 0 } }, // bhargav kerkar
-    // '11': { '1': { robotics: 32, coding: 0 } }, // himani yogendra yadav
+    '11': { '1': { robotics: 32, coding: 0 } }, // himani yogendra yadav
     '13': { '1': { robotics: 32, coding: 0 } }, // keshav jha
     '14': { '1': { robotics: 35, coding: 0 } }, // kinjal.pandit
     '15': { '1': { robotics: 16, coding: 0 } }, // Merriza John
-    // '16': { '1': { robotics: 37, coding: 0 } }, // Nattansh.Nardia
-    // '17': { '1': { robotics: 35, coding: 0 } }, // jivika deepnarayan mishra
-    // '19': { '1': { robotics: 40, coding: 0 } }, // Rishi Maurya
+    '16': { '1': { robotics: 37, coding: 0 } }, // Nattansh.Nardia
+    '17': { '1': { robotics: 35, coding: 0 } }, // jivika deepnarayan mishra
+    '19': { '1': { robotics: 40, coding: 0 } }, // Rishi Maurya
     '20': { '1': { robotics: 27, coding: 0 } }, // sai parkar
     '21': { '1': { robotics: 32, coding: 0 } }, // satyam kumar
-    // '22': { '1': { robotics: 29, coding: 0 } }, // Saumya chavan
-    // '26': { '1': { robotics: 35, coding: 0 } }, // Soham Sonawane
+    '22': { '1': { robotics: 29, coding: 0 } }, // Saumya chavan
+    '26': { '1': { robotics: 35, coding: 0 } }, // Soham Sonawane
     '27': { '1': { robotics: 40, coding: 0 } }, // Surabhi Parekh
-    // '30': { '1': { robotics: 37, coding: 0 } }, // Vihaan Dudani
-    // '31': { '1': { robotics: 48, coding: 0 } }, // VRITIKA.ZENDE
+    '30': { '1': { robotics: 37, coding: 0 } }, // Vihaan Dudani
+    '31': { '1': { robotics: 48, coding: 0 } }, // VRITIKA.ZENDE
 
     // Class 7 - Daisies - Set 1
-    // '3': { '1': { robotics: 32, coding: 0 } }, // arnav parkar
-    // '4': { '1': { robotics: 16, coding: 0 } }, // Aryan Nigam
+    '3': { '1': { robotics: 32, coding: 0 } }, // arnav parkar
+    '4': { '1': { robotics: 16, coding: 0 } }, // Aryan Nigam
     '06': { '1': { robotics: 35, coding: 0 } }, // Gauri Chavan
     '11': { '1': { robotics: 32, coding: 0 } }, // mukta sagar tawale
-    // '14': { '1': { robotics: 35, coding: 0 } }, // PRAVEENSINGH RAO
-    // '15': { '1': { robotics: 16, coding: 0 } }, // pruthviraj Patil
+    '14': { '1': { robotics: 35, coding: 0 } }, // PRAVEENSINGH RAO
+    '15': { '1': { robotics: 16, coding: 0 } }, // pruthviraj Patil
     '17': { '1': { robotics: 35, coding: 0 } }, // Risheesh Kannoly
-    // '20': { '1': { robotics: 27, coding: 0 } }, // ROHITSETHIYA
+    '20': { '1': { robotics: 27, coding: 0 } }, // ROHITSETHIYA
     '23': { '1': { robotics: 27, coding: 0 } }, // Samyak Chaandrikapure
-    // '25': { '1': { robotics: 29, coding: 0 } }, // shaurya patil
-    // '27': { '1': { robotics: 40, coding: 0 } }, // shriyan.patel
+    '25': { '1': { robotics: 29, coding: 0 } }, // shaurya patil
+    '27': { '1': { robotics: 40, coding: 0 } }, // shriyan.patel
     '28': { '1': { robotics: 43, coding: 0 } }, // sridharshan
     '29': { '1': { robotics: 19, coding: 0 } }, // tirth dhiwar
 
     // Class 8 - Daffodils - Set 2
-    // '01': { '2': { robotics: 40, coding: 0 } }, // ABHIUDAY SINGH
+    '01': { '2': { robotics: 40, coding: 0 } }, // ABHIUDAY SINGH
     '02': { '2': { robotics: 37, coding: 0 } }, // Adiraj Hole
-    // '3': { '2': { robotics: 32, coding: 0 } }, // ADVAIT MULEY
+    '3': { '2': { robotics: 32, coding: 0 } }, // ADVAIT MULEY
     '5': { '2': { robotics: 24, coding: 0 } }, // ARNAV PANSARE
-    // '06': { '2': { robotics: 35, coding: 0 } }, // Atharv Ray
-    // '10': { '2': { robotics: 29, coding: 0 } }, // dimple.shekhawat
-    // '11': { '2': { robotics: 32, coding: 0 } }, // Harshada Tamhane
-    // '12': { '2': { robotics: 8, coding: 0 } }, // HIND PATEL
-    // '13': { '2': { robotics: 32, coding: 0 } }, // janvi Singh
-    // '15': { '2': { robotics: 16, coding: 0 } }, // Keren Daniel
+    '06': { '2': { robotics: 35, coding: 0 } }, // Atharv Ray
+    '10': { '2': { robotics: 29, coding: 0 } }, // dimple.shekhawat
+    '11': { '2': { robotics: 32, coding: 0 } }, // Harshada Tamhane
+    '12': { '2': { robotics: 8, coding: 0 } }, // HIND PATEL
+    '13': { '2': { robotics: 32, coding: 0 } }, // janvi Singh
+    '15': { '2': { robotics: 16, coding: 0 } }, // Keren Daniel
     '16': { '2': { robotics: 37, coding: 0 } }, // KRISHAY SHIVLAL MAKANI
-    // '17': { '2': { robotics: 35, coding: 0 } }, // MANNAT KOKATE
+    '17': { '2': { robotics: 35, coding: 0 } }, // MANNAT KOKATE
     '19': { '2': { robotics: 40, coding: 0 } }, // MUJTABAKHAN
-    // '20': { '2': { robotics: 27, coding: 0 } }, // Mishwa pokar
+    '20': { '2': { robotics: 27, coding: 0 } }, // Mishwa pokar
     '22': { '2': { robotics: 29, coding: 0 } }, // MUKUND PATEL
-    // '23': { '2': { robotics: 27, coding: 0 } }, // NIDHI SARMA
-    // '24': { '2': { robotics: 32, coding: 0 } }, // piyu.sirohi
-    // '27': { '2': { robotics: 40, coding: 0 } }, // Rohan Saha
-    // '28': { '2': { robotics: 43, coding: 0 } }, // RUCHI RAMESH CHAUBEY
-    // '29': { '2': { robotics: 19, coding: 0 } }, // sayali sharad gund
+    '23': { '2': { robotics: 27, coding: 0 } }, // NIDHI SARMA
+    '24': { '2': { robotics: 32, coding: 0 } }, // piyu.sirohi
+    '27': { '2': { robotics: 40, coding: 0 } }, // Rohan Saha
+    '28': { '2': { robotics: 43, coding: 0 } }, // RUCHI RAMESH CHAUBEY
+    '29': { '2': { robotics: 19, coding: 0 } }, // sayali sharad gund
     '30': { '2': { robotics: 37, coding: 0 } }, // shanttah dabhadkar
-    // '31': { '2': { robotics: 48, coding: 0 } }, // subhransu sahoo
+    '31': { '2': { robotics: 48, coding: 0 } }, // subhransu sahoo
     '33': { '2': { robotics: 32, coding: 0 } }, // sujal.pandit
     '35': { '2': { robotics: 24, coding: 0 } }, // ved .mavani
-    // '36': { '2': { robotics: 13, coding: 0 } }, // vidhyesh nikam
-    // '37': { '2': { robotics: 19, coding: 0 } }, // vidhi dhonde
+    '36': { '2': { robotics: 13, coding: 0 } }, // vidhyesh nikam
+    '37': { '2': { robotics: 19, coding: 0 } }, // vidhi dhonde
     '38': { '2': { robotics: 29, coding: 0 } }, // vijay gupta
 
     // Class 8 - Daisies - Set 2
-    // '02': { '2': { robotics: 37, coding: 0 } }, // Aditya Kumar raj
-    // '5': { '2': { robotics: 24, coding: 0 } }, // Arnav Ashok Godambe
+    '02': { '2': { robotics: 37, coding: 0 } }, // Aditya Kumar raj
+    '5': { '2': { robotics: 24, coding: 0 } }, // Arnav Ashok Godambe
     '06': { '2': { robotics: 35, coding: 0 } }, // athang koli
-    // '7': { '2': { robotics: 27, coding: 0 } }, // devansh koli
+    '7': { '2': { robotics: 27, coding: 0 } }, // devansh koli
     '09': { '2': { robotics: 35, coding: 0 } }, // gauri prajapati
     '10': { '2': { robotics: 29, coding: 0 } }, // harsh pravin bhoir
     '12': { '2': { robotics: 8, coding: 0 } }, // jjjeshon rex
-    // '13': { '2': { robotics: 32, coding: 0 } }, // jalad tiwari
+    '13': { '2': { robotics: 32, coding: 0 } }, // jalad tiwari
     '14': { '2': { robotics: 35, coding: 0 } }, // JAY JADHAV
     '15': { '2': { robotics: 16, coding: 0 } }, // jignesh jitendra patil
-    // '16': { '2': { robotics: 37, coding: 0 } }, // kanak shah
-    // '17': { '2': { robotics: 35, coding: 0 } }, // Kashish sonawale
-    // '19': { '2': { robotics: 40, coding: 0 } }, // lucky tiwari
+    '16': { '2': { robotics: 37, coding: 0 } }, // kanak shah
+    '17': { '2': { robotics: 35, coding: 0 } }, // Kashish sonawale
+    '19': { '2': { robotics: 40, coding: 0 } }, // lucky tiwari
     '20': { '2': { robotics: 27, coding: 0 } }, // mher.pokar
-    // '21': { '2': { robotics: 32, coding: 0 } }, // moksh rakesh more
-    // '22': { '2': { robotics: 29, coding: 0 } }, // Naitik Jaiswal
+    '21': { '2': { robotics: 32, coding: 0 } }, // moksh rakesh more
+    '22': { '2': { robotics: 29, coding: 0 } }, // Naitik Jaiswal
     '24': { '2': { robotics: 32, coding: 0 } }, // pari baviskar
     '25': { '2': { robotics: 29, coding: 0 } }, // ParthVishalMane
     '26': { '2': { robotics: 35, coding: 0 } }, // PIVALJANGID
-    // '27': { '2': { robotics: 40, coding: 0 } }, // Pratik Prem Kumar
+    '27': { '2': { robotics: 40, coding: 0 } }, // Pratik Prem Kumar
     '28': { '2': { robotics: 43, coding: 0 } }, // pratik jadhav
-    // '29': { '2': { robotics: 19, coding: 0 } }, // rajpal yadav
-    // '30': { '2': { robotics: 37, coding: 0 } }, // riya helode
+    '29': { '2': { robotics: 19, coding: 0 } }, // rajpal yadav
+    '30': { '2': { robotics: 37, coding: 0 } }, // riya helode
     '31': { '2': { robotics: 48, coding: 0 } }, // rudra tarmale
     '32': { '2': { robotics: 32, coding: 0 } }, // SANDEEP SETHI
-    // '33': { '2': { robotics: 32, coding: 0 } }, // sarah shirsat
+    '33': { '2': { robotics: 32, coding: 0 } }, // sarah shirsat
     '34': { '2': { robotics: 40, coding: 0 } }, // Shriyaan Nalawade
-    // '35': { '2': { robotics: 24, coding: 0 } }, // shubham raj
+    '35': { '2': { robotics: 24, coding: 0 } }, // shubham raj
     '37': { '2': { robotics: 19, coding: 0 } }, // sriaadityaa kumar
-    // '38': { '2': { robotics: 29, coding: 0 } }, // Veer mugdiya
+    '38': { '2': { robotics: 29, coding: 0 } }, // Veer mugdiya
     '39': { '2': { robotics: 40, coding: 0 } }, // Vivaan Pokar
 };
 
@@ -253,3 +253,4 @@ export function hasAttemptedExam(studentId: string, examId: string): boolean {
     return false;
 }
 
+    
