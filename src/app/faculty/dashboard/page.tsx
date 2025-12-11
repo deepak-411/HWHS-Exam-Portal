@@ -8,6 +8,7 @@ import { BookCopy, Users, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { getStoredUsers, type User } from "@/lib/user-store";
 import { getStoredResults, type ExamResult } from "@/lib/exam-store";
+import { useEffect, useState } from "react";
 
 type GroupedStudents = {
   [className: string]: {
@@ -16,9 +17,13 @@ type GroupedStudents = {
 };
 
 export default function FacultyDashboard() {
+  const [totalStudents, setTotalStudents] = useState(0);
   const allUsers = getStoredUsers();
-  const totalStudents = allUsers.length;
   const allResults = getStoredResults();
+
+  useEffect(() => {
+    setTotalStudents(getStoredUsers().length);
+  }, []);
 
   const groupedStudents = allUsers.reduce((acc, user) => {
     const { class: className, section } = user;
@@ -35,13 +40,11 @@ export default function FacultyDashboard() {
   }, {} as GroupedStudents);
 
   const getStudentResult = (student: User): ExamResult | null => {
-    const studentResults = allResults[student.rollNumber];
+    const studentResults = allResults[`${student.rollNumber}-${student.class}-${student.section}`] || allResults[student.rollNumber];
     if (studentResults) {
-      // Find a result that matches the student's exam set, if possible.
-      // This is a simplified logic. A more robust system would link students to specific exams.
       const examIds = Object.keys(studentResults);
       if (examIds.length > 0) {
-        return studentResults[examIds[0]]; // Return the first available result
+        return studentResults[examIds[0]];
       }
     }
     return null;
@@ -170,5 +173,3 @@ export default function FacultyDashboard() {
     </div>
   )
 }
-
-    
