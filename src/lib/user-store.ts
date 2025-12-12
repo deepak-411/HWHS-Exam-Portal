@@ -12,7 +12,7 @@ const USERS_STORAGE_KEY = 'hwhs_users';
 const CURRENT_USER_STORAGE_KEY = 'hwhs_currentUser';
 
 const DEFAULT_USERS: User[] = [
-  // Class 6
+  // Class 6 Daffodils
   { name: 'Aarav jadhav', rollNumber: '01', class: '6', section: 'Daffodils' },
   { name: 'Aarush PATIL', rollNumber: '2', class: '6', section: 'Daffodils' },
   { name: 'ARNAV SINGH', rollNumber: '7', class: '6', section: 'Daffodils' },
@@ -22,7 +22,7 @@ const DEFAULT_USERS: User[] = [
   { name: 'kshitij gopal tapare', rollNumber: '16', class: '6', section: 'Daffodils' },
   { name: 'MANEET TALAMPALLI', rollNumber: '17', class: '6', section: 'Daffodils' },
   { name: 'Mishti Malviya', rollNumber: '19', class: '6', section: 'Daffodils' },
-  { name: 'nirved nilesh bhoir', rollNumber: '19', class: '6', section: 'Daffodils' }, // Duplicate Roll
+  { name: 'nirved nilesh bhoir', rollNumber: '19', class: '6', section: 'Daffodils' },
   { name: 'raj santosh gondhale', rollNumber: '22', class: '6', section: 'Daffodils' },
   { name: 'Reva.Borate', rollNumber: '24', class: '6', section: 'Daffodils' },
   { name: 'rudraunsh agawane', rollNumber: '25', class: '6', section: 'Daffodils' },

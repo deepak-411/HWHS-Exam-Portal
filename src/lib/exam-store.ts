@@ -28,7 +28,7 @@ const DEFAULT_EXAMS: ScheduledExam[] = [
 
 const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } } = {
     // Class 6
-    '01-6-Daffodils': { '4': { robotics: 40, coding: 0 } },
+    '01-6-Daffodils': { '4': { robotics: 37, coding: 0 } },
     '02-6-Daffodils': { '4': { robotics: 11, coding: 0 } },
     '07-6-Daffodils': { '4': { robotics: 24, coding: 0 } },
     '10-6-Daffodils': { '4': { robotics: 29, coding: 0 } },
@@ -36,7 +36,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '12-6-Daffodils': { '4': { robotics: 8, coding: 0 } },
     '16-6-Daffodils': { '4': { robotics: 29, coding: 0 } },
     '17-6-Daffodils': { '4': { robotics: 43, coding: 0 } },
-    '19-6-Daffodils': { '4': { robotics: 43, coding: 0 } }, // Mishti
+    '19-6-Daffodils': { '4': { robotics: 43, coding: 0 } },
     '22-6-Daffodils': { '4': { robotics: 27, coding: 0 } },
     '24-6-Daffodils': { '4': { robotics: 32, coding: 0 } },
     '25-6-Daffodils': { '4': { robotics: 29, coding: 0 } },
@@ -72,7 +72,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '30-7-Daffodils': { '1': { robotics: 37, coding: 0 } },
     '31-7-Daffodils': { '1': { robotics: 48, coding: 0 } },
     '03-7-Daisies': { '1': { robotics: 32, coding: 0 } },
-    '04-7-Daisies': { '1': { robotics: 32, coding: 0 } },
+    '04-7-Daisies': { '1': { robotics: 32, coding: 0 } }, // Note: Roll 4 has two entries in class 7, different sections. This is fine.
     '06-7-Daisies': { '1': { robotics: 37, coding: 0 } },
     '11-7-Daisies': { '1': { robotics: 35, coding: 0 } },
     '14-7-Daisies': { '1': { robotics: 21, coding: 0 } },
@@ -113,7 +113,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '36-8-Daffodils': { '2': { robotics: 19, coding: 0 } },
     '37-8-Daffodils': { '2': { robotics: 19, coding: 0 } },
     '38-8-Daffodils': { '2': { robotics: 29, coding: 0 } },
-    '02-8-Daisies': { '2': { robotics: 43, coding: 0 } },
+    '02-8-Daisies': { '2': { robotics: 37, coding: 0 } },
     '05-8-Daisies': { '2': { robotics: 21, coding: 0 } },
     '06-8-Daisies': { '2': { robotics: 35, coding: 0 } },
     '07-8-Daisies': { '2': { robotics: 32, coding: 0 } },
@@ -122,7 +122,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '12-8-Daisies': { '2': { robotics: 35, coding: 0 } },
     '13-8-Daisies': { '2': { robotics: 21, coding: 0 } },
     '14-8-Daisies': { '2': { robotics: 35, coding: 0 } },
-    '15-8-Daisies': { '2': { robotics: 35, coding: 0 } },
+    '15-8-Daisies': { '2': { robotics: 29, coding: 0 } },
     '16-8-Daisies': { '2': { robotics: 27, coding: 0 } },
     '17-8-Daisies': { '2': { robotics: 29, coding: 0 } },
     '19-8-Daisies': { '2': { robotics: 37, coding: 0 } },
@@ -130,7 +130,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '21-8-Daisies': { '2': { robotics: 29, coding: 0 } },
     '22-8-Daisies': { '2': { robotics: 48, coding: 0 } },
     '24-8-Daisies': { '2': { robotics: 27, coding: 0 } },
-    '25-8-Daisies': { '2': { robotics: 48, coding: 0 } },
+    '25-8-Daisies': { '2': { robotics: 29, coding: 0 } },
     '26-8-Daisies': { '2': { robotics: 37, coding: 0 } },
     '27-8-Daisies': { '2': { robotics: 27, coding: 0 } },
     '28-8-Daisies': { '2': { robotics: 27, coding: 0 } },
