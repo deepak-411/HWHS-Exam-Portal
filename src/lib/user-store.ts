@@ -12,7 +12,7 @@ const USERS_STORAGE_KEY = 'hwhs_users';
 const CURRENT_USER_STORAGE_KEY = 'hwhs_currentUser';
 
 const DEFAULT_USERS: User[] = [
-  // Class 6 Daffodils
+  // Class 6
   { name: 'Aarav jadhav', rollNumber: '01', class: '6', section: 'Daffodils' },
   { name: 'Aarush PATIL', rollNumber: '2', class: '6', section: 'Daffodils' },
   { name: 'ARNAV SINGH', rollNumber: '7', class: '6', section: 'Daffodils' },
@@ -22,7 +22,7 @@ const DEFAULT_USERS: User[] = [
   { name: 'kshitij gopal tapare', rollNumber: '16', class: '6', section: 'Daffodils' },
   { name: 'MANEET TALAMPALLI', rollNumber: '17', class: '6', section: 'Daffodils' },
   { name: 'Mishti Malviya', rollNumber: '19', class: '6', section: 'Daffodils' },
-  { name: 'nirved nilesh bhoir', rollNumber: '19', class: '6', section: 'Daffodils' },
+  { name: 'nirved nilesh bhoir', rollNumber: '19', class: '6', section: 'Daffodils' }, // Duplicate Roll
   { name: 'raj santosh gondhale', rollNumber: '22', class: '6', section: 'Daffodils' },
   { name: 'Reva.Borate', rollNumber: '24', class: '6', section: 'Daffodils' },
   { name: 'rudraunsh agawane', rollNumber: '25', class: '6', section: 'Daffodils' },
@@ -35,10 +35,8 @@ const DEFAULT_USERS: User[] = [
   { name: 'Tanaswi Telange', rollNumber: '33', class: '6', section: 'Daffodils' },
   { name: 'Zahraa Al Friawi', rollNumber: '36', class: '6', section: 'Daffodils' },
 
-  // Class 7 A
+  // Class 7
   { name: 'Rishita Singh', rollNumber: '18', class: '7', section: 'A' },
-
-  // Class 7 Daffodils
   { name: 'Aadya Amit Wani', rollNumber: '01', class: '7', section: 'Daffodils' },
   { name: 'AALIYA ANSARI', rollNumber: '2', class: '7', section: 'Daffodils' },
   { name: 'Aastha lokhande', rollNumber: '3', class: '7', section: 'Daffodils' },
@@ -59,8 +57,6 @@ const DEFAULT_USERS: User[] = [
   { name: 'Surabhi Parekh', rollNumber: '27', class: '7', section: 'Daffodils' },
   { name: 'Vihaan Dudani', rollNumber: '30', class: '7', section: 'Daffodils' },
   { name: 'VRITIKA.ZENDE', rollNumber: '31', class: '7', section: 'Daffodils' },
-
-  // Class 7 Daisies
   { name: 'arnav parkar', rollNumber: '3', class: '7', section: 'Daisies' },
   { name: 'Aryan Nigam', rollNumber: '4', class: '7', section: 'Daisies' },
   { name: 'Gauri Chavan', rollNumber: '06', class: '7', section: 'Daisies' },
@@ -75,7 +71,7 @@ const DEFAULT_USERS: User[] = [
   { name: 'sridharshan', rollNumber: '28', class: '7', section: 'Daisies' },
   { name: 'tirth dhiwar', rollNumber: '29', class: '7', section: 'Daisies' },
 
-  // Class 8 Daffodils
+  // Class 8
   { name: 'ABHIUDAY SINGH', rollNumber: '01', class: '8', section: 'Daffodils' },
   { name: 'Adiraj Hole', rollNumber: '02', class: '8', section: 'Daffodils' },
   { name: 'ADVAIT MULEY', rollNumber: '3', class: '8', section: 'Daffodils' },
@@ -103,8 +99,6 @@ const DEFAULT_USERS: User[] = [
   { name: 'vidhyesh nikam', rollNumber: '36', class: '8', section: 'Daffodils' },
   { name: 'vidhi dhonde', rollNumber: '37', class: '8', section: 'Daffodils' },
   { name: 'vijay gupta', rollNumber: '38', class: '8', section: 'Daffodils' },
-  
-  // Class 8 Daisies
   { name: 'Aditya Kumar raj', rollNumber: '02', class: '8', section: 'Daisies' },
   { name: 'Arnav Ashok Godambe', rollNumber: '5', class: '8', section: 'Daisies' },
   { name: 'athang koli', rollNumber: '06', class: '8', section: 'Daisies' },
@@ -181,7 +175,7 @@ export function storeNewUser(user: User): boolean {
 export function findUser(rollNumber: string, className: string, section: string): User | undefined {
     const users = getStoredUsers();
     // Use find to get the first match that meets all criteria.
-    return users.find(u => u.rollNumber === rollNumber && u.class === className && u.section === section);
+    return users.find(u => u.rollNumber.trim().toLowerCase() === rollNumber.trim().toLowerCase() && u.class.trim().toLowerCase() === className.trim().toLowerCase() && u.section.trim().toLowerCase() === section.trim().toLowerCase());
 }
 
 

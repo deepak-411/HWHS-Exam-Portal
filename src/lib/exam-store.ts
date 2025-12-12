@@ -27,32 +27,30 @@ const DEFAULT_EXAMS: ScheduledExam[] = [
 ];
 
 const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } } = {
-    // Class 6 Daffodils - Set 4
+    // Class 6
     '01-6-Daffodils': { '4': { robotics: 40, coding: 0 } },
-    '02-6-Daffodils': { '4': { robotics: 8, coding: 0 } },
-    '07-6-Daffodils': { '4': { robotics: 27, coding: 0 } },
+    '02-6-Daffodils': { '4': { robotics: 11, coding: 0 } },
+    '07-6-Daffodils': { '4': { robotics: 24, coding: 0 } },
     '10-6-Daffodils': { '4': { robotics: 29, coding: 0 } },
-    '11-6-Daffodils': { '4': { robotics: 32, coding: 0 } },
+    '11-6-Daffodils': { '4': { robotics: 27, coding: 0 } },
     '12-6-Daffodils': { '4': { robotics: 8, coding: 0 } },
-    '16-6-Daffodils': { '4': { robotics: 37, coding: 0 } },
-    '17-6-Daffodils': { '4': { robotics: 35, coding: 0 } },
-    '19-6-Daffodils': { '4': { robotics: 40, coding: 0 } },
-    '22-6-Daffodils': { '4': { robotics: 29, coding: 0 } },
+    '16-6-Daffodils': { '4': { robotics: 29, coding: 0 } },
+    '17-6-Daffodils': { '4': { robotics: 43, coding: 0 } },
+    '19-6-Daffodils': { '4': { robotics: 43, coding: 0 } }, // Mishti
+    '22-6-Daffodils': { '4': { robotics: 27, coding: 0 } },
     '24-6-Daffodils': { '4': { robotics: 32, coding: 0 } },
     '25-6-Daffodils': { '4': { robotics: 29, coding: 0 } },
-    '26-6-Daffodils': { '4': { robotics: 35, coding: 0 } },
+    '26-6-Daffodils': { '4': { robotics: 32, coding: 0 } },
     '27-6-Daffodils': { '4': { robotics: 40, coding: 0 } },
     '28-6-Daffodils': { '4': { robotics: 43, coding: 0 } },
     '29-6-Daffodils': { '4': { robotics: 19, coding: 0 } },
-    '30-6-Daffodils': { '4': { robotics: 37, coding: 0 } },
-    '31-6-Daffodils': { '4': { robotics: 48, coding: 0 } },
+    '30-6-Daffodils': { '4': { robotics: 19, coding: 0 } },
+    '31-6-Daffodils': { '4': { robotics: 35, coding: 0 } },
     '33-6-Daffodils': { '4': { robotics: 32, coding: 0 } },
     '36-6-Daffodils': { '4': { robotics: 13, coding: 0 } },
 
-    // Class 7 - A - Set 1
-    '18-7-A': { '1': { robotics: 25, coding: 0 } },
-
-    // Class 7 - Daffodils - Set 1
+    // Class 7
+    '18-7-A': { '1': { robotics: 35, coding: 0 } },
     '01-7-Daffodils': { '1': { robotics: 40, coding: 0 } },
     '02-7-Daffodils': { '1': { robotics: 8, coding: 0 } },
     '03-7-Daffodils': { '1': { robotics: 32, coding: 0 } },
@@ -73,12 +71,10 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '27-7-Daffodils': { '1': { robotics: 48, coding: 0 } },
     '30-7-Daffodils': { '1': { robotics: 37, coding: 0 } },
     '31-7-Daffodils': { '1': { robotics: 48, coding: 0 } },
-
-    // Class 7 - Daisies - Set 1
     '03-7-Daisies': { '1': { robotics: 32, coding: 0 } },
-    '04-7-Daisies': { '1': { robotics: 16, coding: 0 } },
-    '06-7-Daisies': { '1': { robotics: 35, coding: 0 } },
-    '11-7-Daisies': { '1': { robotics: 32, coding: 0 } },
+    '04-7-Daisies': { '1': { robotics: 32, coding: 0 } },
+    '06-7-Daisies': { '1': { robotics: 37, coding: 0 } },
+    '11-7-Daisies': { '1': { robotics: 35, coding: 0 } },
     '14-7-Daisies': { '1': { robotics: 21, coding: 0 } },
     '15-7-Daisies': { '1': { robotics: 29, coding: 0 } },
     '17-7-Daisies': { '1': { robotics: 37, coding: 0 } },
@@ -89,7 +85,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '28-7-Daisies': { '1': { robotics: 32, coding: 0 } },
     '29-7-Daisies': { '1': { robotics: 29, coding: 0 } },
 
-    // Class 8 - Daffodils - Set 2
+    // Class 8
     '01-8-Daffodils': { '2': { robotics: 45, coding: 0 } },
     '02-8-Daffodils': { '2': { robotics: 37, coding: 0 } },
     '03-8-Daffodils': { '2': { robotics: 40, coding: 0 } },
@@ -117,8 +113,6 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '36-8-Daffodils': { '2': { robotics: 19, coding: 0 } },
     '37-8-Daffodils': { '2': { robotics: 19, coding: 0 } },
     '38-8-Daffodils': { '2': { robotics: 29, coding: 0 } },
-
-    // Class 8 - Daisies - Set 2
     '02-8-Daisies': { '2': { robotics: 43, coding: 0 } },
     '05-8-Daisies': { '2': { robotics: 21, coding: 0 } },
     '06-8-Daisies': { '2': { robotics: 35, coding: 0 } },
@@ -128,7 +122,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '12-8-Daisies': { '2': { robotics: 35, coding: 0 } },
     '13-8-Daisies': { '2': { robotics: 21, coding: 0 } },
     '14-8-Daisies': { '2': { robotics: 35, coding: 0 } },
-    '15-8-Daisies': { '2': { robotics: 0, coding: 0 } },
+    '15-8-Daisies': { '2': { robotics: 35, coding: 0 } },
     '16-8-Daisies': { '2': { robotics: 27, coding: 0 } },
     '17-8-Daisies': { '2': { robotics: 29, coding: 0 } },
     '19-8-Daisies': { '2': { robotics: 37, coding: 0 } },
@@ -139,7 +133,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '25-8-Daisies': { '2': { robotics: 48, coding: 0 } },
     '26-8-Daisies': { '2': { robotics: 37, coding: 0 } },
     '27-8-Daisies': { '2': { robotics: 27, coding: 0 } },
-    '28-8-Daisies': { '2': { robotics: 43, coding: 0 } },
+    '28-8-Daisies': { '2': { robotics: 27, coding: 0 } },
     '29-8-Daisies': { '2': { robotics: 24, coding: 0 } },
     '30-8-Daisies': { '2': { robotics: 16, coding: 0 } },
     '31-8-Daisies': { '2': { robotics: 40, coding: 0 } },
@@ -244,8 +238,7 @@ export function markExamAsAttempted(studentId: string, examId: string) {
 export function hasAttemptedExam(studentId: string, examId: string): boolean {
     if (typeof window !== 'undefined') {
         // An exam is considered attempted if a result exists for it (either hardcoded or in local storage).
-        const uniqueStudentKey = `${studentId.padStart(2, '0')}-${examId}`; // This logic might need to be more sophisticated
-        const result = getResultForStudent(uniqueStudentKey, examId);
+        const result = getResultForStudent(studentId, examId);
         if (result) return true;
 
         // Fallback check for manually marked attempts, though the result check should be primary.
@@ -255,5 +248,3 @@ export function hasAttemptedExam(studentId: string, examId: string): boolean {
     }
     return false;
 }
-
-    

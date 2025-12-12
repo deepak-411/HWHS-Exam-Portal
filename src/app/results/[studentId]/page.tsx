@@ -7,7 +7,7 @@ import { ArrowLeft, Printer, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { findUser } from "@/lib/user-store";
+import { findUser, type User } from "@/lib/user-store";
 import { getStoredResults, type ExamResult } from "@/lib/exam-store";
 
 
@@ -136,5 +136,3 @@ export default function ResultPage() {
         </div>
     )
 }
-
-    
