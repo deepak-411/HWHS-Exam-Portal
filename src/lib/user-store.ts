@@ -180,7 +180,7 @@ export function storeNewUser(user: User): boolean {
 
 export function findUser(rollNumber: string, className: string, section: string): User | undefined {
     const users = getStoredUsers();
-    // Use find to get the first match. In case of duplicates, this will be the one found.
+    // Use find to get the first match that meets all criteria.
     return users.find(u => u.rollNumber === rollNumber && u.class === className && u.section === section);
 }
 
