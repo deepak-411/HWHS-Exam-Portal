@@ -24,8 +24,8 @@ const DEFAULT_EXAMS: ScheduledExam[] = [
     { selectedClass: '7', selectedSection: 'A', selectedSet: '1' },
     { selectedClass: '8', selectedSection: 'Daffodils', selectedSet: '2' },
     { selectedClass: '8', selectedSection: 'Daisies', selectedSet: '2' },
-    { selectedClass: '9', selectedSection: 'Daffodils', selectedSet: '7' },
-    { selectedClass: '9', selectedSection: 'Daisies', selectedSet: '8' },
+    { selectedClass: '9', selectedSection: 'Daffodils', selectedSet: '4' },
+    { selectedClass: '9', selectedSection: 'Daisies', selectedSet: '5' },
 ];
 
 const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } } = {
