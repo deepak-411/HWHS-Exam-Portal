@@ -196,7 +196,7 @@ export default function ExamClient({ examId }: { examId: string }) {
     });
 
     const totalMcq = mcqQuestions.length;
-    const mcqScore = Math.round((mcqCorrect / totalMcq) * 80);
+    const mcqScore = totalMcq > 0 ? Math.round((mcqCorrect / totalMcq) * 80) : 0;
     const studentId = `${student.rollNumber}-${student.class}-${student.section}`;
 
 
