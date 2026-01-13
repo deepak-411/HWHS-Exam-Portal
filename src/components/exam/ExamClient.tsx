@@ -24,8 +24,9 @@ import { getCurrentUser, type User } from "@/lib/user-store";
 import { sendSubmissionEmail } from "@/ai/flows/send-submission-email-flow";
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { storeResult, hasAttemptedExam, markExamAsAttempted } from "@/lib/exam-store";
+import { useRouter } from "next/navigation";
 
-type ExamStatus = "loading" | "fullscreen_prompt" | "mcq" | "coding" | "submitting" | "submitted" | "blocked";
+type ExamStatus = "loading" | "fullscreen_prompt" | "mcq" | "coding" | "submitting" | "submitted" | "blocked" | "error";
 type Answers = { [key: number]: string };
 
 export default function ExamClient({ examId }: { examId: string }) {
@@ -37,6 +38,7 @@ export default function ExamClient({ examId }: { examId: string }) {
   const { toast } = useToast();
   const examSubmittedRef = useRef(false);
   const [student, setStudent] = useState<User | null>(null);
+  const router = useRouter();
 
   // Load exam questions and check for previous attempts
   useEffect(() => {
@@ -55,7 +57,7 @@ export default function ExamClient({ examId }: { examId: string }) {
 
     const questionSetIndex = parseInt(examId, 10) - 1;
     if (isNaN(questionSetIndex) || questionSetIndex < 0 || questionSetIndex >= 8) {
-        setStatus("blocked");
+        setStatus("error");
         toast({ title: "Invalid Exam", description: "This exam set is not available." });
         return;
     }
@@ -65,6 +67,13 @@ export default function ExamClient({ examId }: { examId: string }) {
     const end = start + questionsPerSet;
     
     const examQuestions = questions.slice(start, end);
+
+    if (examQuestions.length === 0) {
+        setStatus("error");
+        toast({ title: "Question Loading Error", description: "Could not load questions for this exam set." });
+        return;
+    }
+
     setMcqQuestions(examQuestions);
     
     setStatus("fullscreen_prompt");
@@ -261,6 +270,27 @@ export default function ExamClient({ examId }: { examId: string }) {
     );
   }
 
+  if (status === "error") {
+    return (
+        <div className="flex h-screen items-center justify-center">
+            <Card className="w-full max-w-lg text-center">
+                <CardHeader>
+                    <CardTitle className="font-headline text-3xl">Error</CardTitle>
+                    <CardDescription>An error occurred while loading the exam.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Could not load questions for this exam set. Please contact your faculty.</p>
+                </CardContent>
+                <CardFooter>
+                    <Button asChild className="w-full" onClick={() => router.push('/student/dashboard')}>
+                        <Link href="#">Back to Dashboard</Link>
+                    </Button>
+                </CardFooter>
+            </Card>
+        </div>
+    )
+  }
+
   if (status === "fullscreen_prompt") {
     return (
         <div className="flex h-screen items-center justify-center">
@@ -443,3 +473,5 @@ export default function ExamClient({ examId }: { examId: string }) {
     </div>
   );
 }
+
+    
