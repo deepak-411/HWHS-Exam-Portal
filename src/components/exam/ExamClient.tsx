@@ -150,7 +150,6 @@ export default function ExamClient({ examId }: { examId: string }) {
     }
   };
 
-  const currentQuestion = mcqQuestions[currentQuestionIndex];
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < mcqQuestions.length - 1) {
@@ -161,7 +160,7 @@ export default function ExamClient({ examId }: { examId: string }) {
   };
 
   const handleManualNext = () => {
-     if (!answers[currentQuestion.id]) {
+     if (!answers[mcqQuestions[currentQuestionIndex].id]) {
       toast({
         variant: "destructive",
         title: "No option selected",
@@ -259,219 +258,215 @@ export default function ExamClient({ examId }: { examId: string }) {
     setStatus("submitted");
   };
 
-  if (status === "loading") {
-    return (
-        <div className="flex h-screen items-center justify-center">
+  const renderContent = () => {
+    switch (status) {
+      case "loading":
+        return (
+          <div className="flex h-screen items-center justify-center">
             <div className="flex flex-col items-center space-y-4">
-                 <Loader2 className="h-12 w-12 animate-spin text-primary"/>
-                 <p className="text-lg">Loading Exam...</p>
-            </div>
-        </div>
-    );
-  }
-
-  if (status === "error") {
-    return (
-        <div className="flex h-screen items-center justify-center">
-            <Card className="w-full max-w-lg text-center">
-                <CardHeader>
-                    <CardTitle className="font-headline text-3xl">Error</CardTitle>
-                    <CardDescription>An error occurred while loading the exam.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p>Could not load questions for this exam set. Please contact your faculty.</p>
-                </CardContent>
-                <CardFooter>
-                    <Button asChild className="w-full" onClick={() => router.push('/student/dashboard')}>
-                        <Link href="#">Back to Dashboard</Link>
-                    </Button>
-                </CardFooter>
-            </Card>
-        </div>
-    )
-  }
-
-  if (status === "fullscreen_prompt") {
-    return (
-        <div className="flex h-screen items-center justify-center">
-            <Card className="w-full max-w-lg text-center">
-                <CardHeader>
-                    <CardTitle className="font-headline text-3xl">Ready to Begin?</CardTitle>
-                    <CardDescription>This exam must be taken in full-screen mode to prevent cheating.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                    <AlertTriangle className="h-16 w-16 text-destructive mx-auto" />
-                    <p className="font-bold text-lg">Proctoring is Enabled</p>
-                    <ul className="text-sm text-muted-foreground list-disc list-inside text-left">
-                        <li>The exam must be in full-screen.</li>
-                        <li>Switching tabs or leaving full-screen will auto-submit your exam.</li>
-                        <li>Copying and right-clicking are disabled.</li>
-                    </ul>
-                </CardContent>
-                <CardFooter>
-                    <Button className="w-full" onClick={startExamInFullScreen}>
-                        <MonitorPlay className="mr-2"/> Start Exam in Full-Screen
-                    </Button>
-                </CardFooter>
-            </Card>
-        </div>
-    )
-  }
-
-  if (status === "blocked") {
-     return (
-        <div className="flex h-screen items-center justify-center">
-            <Card className="w-full max-w-lg text-center">
-                <CardHeader>
-                    <CardTitle className="font-headline text-3xl">Exam Already Attempted</CardTitle>
-                    <CardDescription>You have already submitted this exam and cannot attempt it again.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p>Your results will be published on the dashboard once they are evaluated by the faculty.</p>
-                </CardContent>
-                <CardFooter>
-                    <Button asChild className="w-full">
-                        <Link href="/student/dashboard">Back to Dashboard</Link>
-                    </Button>
-                </CardFooter>
-            </Card>
-        </div>
-    )
-  }
-  
-  if (status === "submitting") {
-    return (
-        <div className="flex h-screen items-center justify-center">
-             <Card className="w-full max-w-lg text-center">
-                <CardHeader>
-                    <CardTitle className="font-headline text-3xl">Submitting...</CardTitle>
-                    <CardDescription>Please wait while we process your submission.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto"/>
-                </CardContent>
-            </Card>
-        </div>
-    )
-  }
-
-  if (status === "submitted") {
-    return (
-        <div className="flex h-screen items-center justify-center">
-            <Card className="w-full max-w-lg text-center">
-                <CardHeader>
-                    <CardTitle className="font-headline text-3xl">Submission Successful!</CardTitle>
-                    <CardDescription>Your exam has been submitted for evaluation.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p>Your results will be published by the faculty soon. You can check your dashboard for updates.</p>
-                </CardContent>
-                <CardFooter>
-                    <Button asChild className="w-full">
-                        <Link href="/student/dashboard">Back to Dashboard</Link>
-                    </Button>
-                </CardFooter>
-            </Card>
-        </div>
-    )
-  }
-
-  if (!currentQuestion) {
-     return (
-        <div className="flex h-screen items-center justify-center">
-            <div className="flex flex-col items-center space-y-4">
-                 <Loader2 className="h-12 w-12 animate-spin text-primary"/>
-                 <p className="text-lg">Error loading question...</p>
-            </div>
-        </div>
-    );
-  }
-
-  return (
-    <div className="flex h-screen w-screen flex-col">
-      <Card className="flex h-full w-full flex-col rounded-none border-0">
-        <CardHeader>
-          <div className="flex justify-between items-start">
-            <div>
-              <CardTitle className="font-headline text-3xl">
-                Robotics and AI Examination
-              </CardTitle>
-               <CardDescription>
-                 {status === 'mcq' ? `Question ${currentQuestionIndex + 1} of ${mcqQuestions.length}` : 'Coding Challenge'}
-              </CardDescription>
-            </div>
-            <div className="flex items-center gap-4">
-               <Timer initialTime={1800} onTimeUp={handleTimeUp} />
-               <AlertDialog>
-                 <AlertDialogTrigger asChild>
-                    <Button variant="destructive" size="sm"><ShieldAlert className="mr-2"/> Rules</Button>
-                 </AlertDialogTrigger>
-                 <AlertDialogContent>
-                   <AlertDialogHeader>
-                     <AlertDialogTitle>Exam Rules & Proctoring</AlertDialogTitle>
-                     <AlertDialogDescription>
-                       This is a 30-minute exam. It must be taken in full-screen. Switching tabs, leaving full-screen, or trying to copy content will result in an automatic submission. You cannot re-attempt the exam.
-                     </AlertDialogDescription>
-                   </AlertDialogHeader>
-                   <AlertDialogFooter>
-                     <AlertDialogAction>I Understand</AlertDialogAction>
-                   </AlertDialogFooter>
-                 </AlertDialogContent>
-               </AlertDialog>
+              <Loader2 className="h-12 w-12 animate-spin text-primary" />
+              <p className="text-lg">Loading Exam...</p>
             </div>
           </div>
-          {status === 'mcq' && <Progress value={((currentQuestionIndex + 1) / mcqQuestions.length) * 100} className="mt-4" />}
-        </CardHeader>
-
-        {status === 'mcq' && (
-           <>
-             <CardContent className="flex-1 overflow-y-auto">
-               <h2 className="text-lg font-semibold mb-6">{currentQuestion.question}</h2>
-               <RadioGroup
-                 value={answers[currentQuestion.id] || ""}
-                 onValueChange={(value) =>
-                   setAnswers({ ...answers, [currentQuestion.id]: value })
-                 }
-                 className="space-y-4"
-               >
-                 {currentQuestion.options.map((option, index) => (
-                   <div key={index} className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted transition-colors">
-                     <RadioGroupItem value={option} id={`option-${index}`} />
-                     <Label htmlFor={`option-${index}`} className="flex-1 text-base cursor-pointer">{option}</Label>
-                   </div>
-                 ))}
-               </RadioGroup>
-             </CardContent>
-             <CardFooter className="justify-end border-t pt-4">
-               <Button onClick={handleManualNext}>
-                 {currentQuestionIndex === mcqQuestions.length - 1 ? "Proceed to Coding Section" : "Next Question"}
-               </Button>
-             </CardFooter>
-           </>
-        )}
-
-        {status === 'coding' && (
-           <>
-              <CardContent className="flex flex-1 flex-col space-y-4 pt-0">
-                  <div className="p-4 rounded-lg bg-muted border">
-                     <p className="font-semibold">Question: Write HTML and CSS code to display your school name, your name, subject, and marks.</p>
+        );
+      case "error":
+        return (
+          <div className="flex h-screen items-center justify-center">
+            <Card className="w-full max-w-lg text-center">
+              <CardHeader>
+                <CardTitle className="font-headline text-3xl">Error</CardTitle>
+                <CardDescription>An error occurred while loading the exam.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Could not load questions for this exam set. Please contact your faculty.</p>
+              </CardContent>
+              <CardFooter>
+                <Button asChild className="w-full" onClick={() => router.push('/student/dashboard')}>
+                  <Link href="#">Back to Dashboard</Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+        );
+      case "fullscreen_prompt":
+        return (
+          <div className="flex h-screen items-center justify-center">
+            <Card className="w-full max-w-lg text-center">
+              <CardHeader>
+                <CardTitle className="font-headline text-3xl">Ready to Begin?</CardTitle>
+                <CardDescription>This exam must be taken in full-screen mode to prevent cheating.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <AlertTriangle className="h-16 w-16 text-destructive mx-auto" />
+                <p className="font-bold text-lg">Proctoring is Enabled</p>
+                <ul className="text-sm text-muted-foreground list-disc list-inside text-left">
+                  <li>The exam must be in full-screen.</li>
+                  <li>Switching tabs or leaving full-screen will auto-submit your exam.</li>
+                  <li>Copying and right-clicking are disabled.</li>
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" onClick={startExamInFullScreen}>
+                  <MonitorPlay className="mr-2" /> Start Exam in Full-Screen
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+        );
+      case "blocked":
+        return (
+          <div className="flex h-screen items-center justify-center">
+            <Card className="w-full max-w-lg text-center">
+              <CardHeader>
+                <CardTitle className="font-headline text-3xl">Exam Already Attempted</CardTitle>
+                <CardDescription>You have already submitted this exam and cannot attempt it again.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Your results will be published on the dashboard once they are evaluated by the faculty.</p>
+              </CardContent>
+              <CardFooter>
+                <Button asChild className="w-full">
+                  <Link href="/student/dashboard">Back to Dashboard</Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+        );
+      case "submitting":
+        return (
+          <div className="flex h-screen items-center justify-center">
+            <Card className="w-full max-w-lg text-center">
+              <CardHeader>
+                <CardTitle className="font-headline text-3xl">Submitting...</CardTitle>
+                <CardDescription>Please wait while we process your submission.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
+              </CardContent>
+            </Card>
+          </div>
+        );
+      case "submitted":
+        return (
+          <div className="flex h-screen items-center justify-center">
+            <Card className="w-full max-w-lg text-center">
+              <CardHeader>
+                <CardTitle className="font-headline text-3xl">Submission Successful!</CardTitle>
+                <CardDescription>Your exam has been submitted for evaluation.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Your results will be published by the faculty soon. You can check your dashboard for updates.</p>
+              </CardContent>
+              <CardFooter>
+                <Button asChild className="w-full">
+                  <Link href="/student/dashboard">Back to Dashboard</Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+        );
+      case "mcq":
+      case "coding":
+        if (mcqQuestions.length === 0) {
+            return (
+                <div className="flex h-screen items-center justify-center">
+                    <div className="flex flex-col items-center space-y-4">
+                        <Loader2 className="h-12 w-12 animate-spin text-primary"/>
+                        <p className="text-lg">Error loading question...</p>
+                    </div>
+                </div>
+            );
+        }
+        const currentQuestion = mcqQuestions[currentQuestionIndex];
+        return (
+          <div className="flex h-screen w-screen flex-col">
+            <Card className="flex h-full w-full flex-col rounded-none border-0">
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle className="font-headline text-3xl">
+                      Robotics and AI Examination
+                    </CardTitle>
+                    <CardDescription>
+                      {status === 'mcq' ? `Question ${currentQuestionIndex + 1} of ${mcqQuestions.length}` : 'Coding Challenge'}
+                    </CardDescription>
                   </div>
-                  <Textarea 
-                      placeholder="Write your code here..." 
+                  <div className="flex items-center gap-4">
+                    <Timer initialTime={1800} onTimeUp={handleTimeUp} />
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button variant="destructive" size="sm"><ShieldAlert className="mr-2" /> Rules</Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Exam Rules & Proctoring</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            This is a 30-minute exam. It must be taken in full-screen. Switching tabs, leaving full-screen, or trying to copy content will result in an automatic submission. You cannot re-attempt the exam.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogAction>I Understand</AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
+                </div>
+                {status === 'mcq' && <Progress value={((currentQuestionIndex + 1) / mcqQuestions.length) * 100} className="mt-4" />}
+              </CardHeader>
+
+              {status === 'mcq' && (
+                <>
+                  <CardContent className="flex-1 overflow-y-auto">
+                    <h2 className="text-lg font-semibold mb-6">{currentQuestion.question}</h2>
+                    <RadioGroup
+                      value={answers[currentQuestion.id] || ""}
+                      onValueChange={(value) =>
+                        setAnswers({ ...answers, [currentQuestion.id]: value })
+                      }
+                      className="space-y-4"
+                    >
+                      {currentQuestion.options.map((option, index) => (
+                        <div key={index} className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted transition-colors">
+                          <RadioGroupItem value={option} id={`option-${index}`} />
+                          <Label htmlFor={`option-${index}`} className="flex-1 text-base cursor-pointer">{option}</Label>
+                        </div>
+                      ))}
+                    </RadioGroup>
+                  </CardContent>
+                  <CardFooter className="justify-end border-t pt-4">
+                    <Button onClick={handleManualNext}>
+                      {currentQuestionIndex === mcqQuestions.length - 1 ? "Proceed to Coding Section" : "Next Question"}
+                    </Button>
+                  </CardFooter>
+                </>
+              )}
+
+              {status === 'coding' && (
+                <>
+                  <CardContent className="flex flex-1 flex-col space-y-4 pt-0">
+                    <div className="p-4 rounded-lg bg-muted border">
+                      <p className="font-semibold">Question: Write HTML and CSS code to display your school name, your name, subject, and marks.</p>
+                    </div>
+                    <Textarea
+                      placeholder="Write your code here..."
                       className="font-code flex-1 bg-muted/50"
                       value={codingAnswer}
                       onChange={(e) => setCodingAnswer(e.target.value)}
-                  />
-              </CardContent>
-              <CardFooter className="justify-between border-t pt-4">
-                  <Button variant="secondary" disabled>Run Code</Button>
-                  <Button onClick={() => handleSubmitExam(false)}>Submit Exam <Send className="ml-2"/></Button>
-              </CardFooter>
-           </>
-        )}
-      </Card>
-    </div>
-  );
-}
+                    />
+                  </CardContent>
+                  <CardFooter className="justify-between border-t pt-4">
+                    <Button variant="secondary" disabled>Run Code</Button>
+                    <Button onClick={() => handleSubmitExam(false)}>Submit Exam <Send className="ml-2" /></Button>
+                  </CardFooter>
+                </>
+              )}
+            </Card>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
-    
+  return renderContent();
+}
