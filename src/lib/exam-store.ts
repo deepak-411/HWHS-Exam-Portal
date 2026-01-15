@@ -147,6 +147,64 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '37-8-Daisies': { '2': { robotics: 21, coding: 0 } },
     '38-8-Daisies': { '2': { robotics: 32, coding: 0 } },
     '39-8-Daisies': { '2': { robotics: 40, coding: 0 } },
+
+    // Class 9 Daffodils
+    '01-9-Daffodils': { '4': { robotics: 16, coding: 0 } },
+    '02-9-Daffodils': { '4': { robotics: 21, coding: 0 } },
+    '03-9-Daffodils': { '4': { robotics: 13, coding: 0 } },
+    '04-9-Daffodils': { '4': { robotics: 21, coding: 0 } },
+    '05-9-Daffodils': { '4': { robotics: 40, coding: 0 } },
+    '07-9-Daffodils': { '4': { robotics: 3, coding: 0 } },
+    '09-9-Daffodils': { '4': { robotics: 19, coding: 0 } },
+    '10-9-Daffodils': { '4': { robotics: 21, coding: 0 } },
+    '11-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '12-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '13-9-Daffodils': { '4': { robotics: 16, coding: 0 } },
+    '14-9-Daffodils': { '4': { robotics: 40, coding: 0 } },
+    '15-9-Daffodils': { '4': { robotics: 16, coding: 0 } },
+    '16-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '19-9-Daffodils': { '4': { robotics: 3, coding: 0 } },
+    '20-9-Daffodils': { '4': { robotics: 37, coding: 0 } },
+    '21-9-Daffodils': { '4': { robotics: 29, coding: 0 } },
+    '22-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '23-9-Daffodils': { '4': { robotics: 16, coding: 0 } },
+    '24-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '25-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '26-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '27-9-Daffodils': { '4': { robotics: 11, coding: 0 } },
+    '28-9-Daffodils': { '4': { robotics: 29, coding: 0 } },
+    '29-9-Daffodils': { '4': { robotics: 40, coding: 0 } },
+    '30-9-Daffodils': { '4': { robotics: 29, coding: 0 } },
+    '33-9-Daffodils': { '4': { robotics: 32, coding: 0 } },
+    '35-9-Daffodils': { '4': { robotics: 51, coding: 0 } },
+    '36-9-Daffodils': { '4': { robotics: 5, coding: 0 } },
+    '37-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '38-9-Daffodils': { '4': { robotics: 0, coding: 0 } },
+    '39-9-Daffodils': { '4': { robotics: 35, coding: 0 } },
+    '40-9-Daffodils': { '4': { robotics: 11, coding: 0 } },
+    
+    // Class 9 Daisies
+    '02-9-Daisies': { '5': { robotics: 27, coding: 0 } }, // AASHVIK KADAM - mcqScore 27 (mcqCorrect 10)
+    '03-9-Daisies': { '5': { robotics: 3, coding: 0 } },
+    '05-9-Daisies': { '5': { robotics: 37, coding: 0 } },
+    '06-9-Daisies': { '5': { robotics: 16, coding: 0 } }, // arnav patil - mcqScore 16 (mcqCorrect 6)
+    '08-9-Daisies': { '5': { robotics: 24, coding: 0 } },
+    '09-9-Daisies': { '5': { robotics: 0, coding: 0 } },
+    '10-9-Daisies': { '5': { robotics: 0, coding: 0 } },
+    '13-9-Daisies': { '5': { robotics: 0, coding: 0 } },
+    '14-9-Daisies': { '5': { robotics: 29, coding: 0 } },
+    '15-9-Daisies': { '5': { robotics: 29, coding: 0 } }, // Janhavi Avinash Bhoir - mcqScore 29 (mcqCorrect 11)
+    '16-9-Daisies': { '5': { robotics: 0, coding: 0 } },
+    '19-9-Daisies': { '5': { robotics: 29, coding: 0 } }, // Ketki Jitendra Talele - mcqScore 29 (mcqCorrect 11)
+    '20-9-Daisies': { '5': { robotics: 16, coding: 0 } },
+    '21-9-Daisies': { '5': { robotics: 9, coding: 0 } }, // NISHANT BRAMHARAKSHAS - mcqScore 9 (mcqCorrect 3)
+    '23-9-Daisies': { '5': { robotics: 37, coding: 0 } },
+    '26-9-Daisies': { '5': { robotics: 32, coding: 0 } }, // SOHAM MARBHAL - mcqScore 32 (mcqCorrect 12)
+    '27-9-Daisies': { '5': { robotics: 27, coding: 0 } },
+    '28-9-Daisies': { '5': { robotics: 9, coding: 0 } }, // SUYASH.RAUL - mcqScore 9 (mcqCorrect 3)
+    '30-9-Daisies': { '5': { robotics: 0, coding: 0 } },
+    '33-9-Daisies': { '5': { robotics: 24, coding: 0 } },
+    '35-9-Daisies': { '5': { robotics: 0, coding: 0 } },
 };
 
 
