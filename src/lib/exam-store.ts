@@ -25,8 +25,6 @@ const DEFAULT_EXAMS: ScheduledExam[] = [
     { selectedClass: '7', selectedSection: 'A', selectedSet: '3' },
     { selectedClass: '8', selectedSection: 'Daffodils', selectedSet: '1' },
     { selectedClass: '8', selectedSection: 'Daisies', selectedSet: '2' },
-    { selectedClass: '9', selectedSection: 'Daffodils', selectedSet: '4' },
-    { selectedClass: '9', selectedSection: 'Daisies', selectedSet: '5' },
 ];
 
 const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } } = {
@@ -147,8 +145,8 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '37-8-Daisies': { '2': { robotics: 21, coding: -1 } },
     '38-8-Daisies': { '2': { robotics: 32, coding: -1 } },
     '39-8-Daisies': { '2': { robotics: 40, coding: -1 } },
-
-    // Class 9 Daffodils - ORIGINAL RESULTS
+    
+    // Class 9 Daffodils
     '01-9-Daffodils': { '4': { robotics: 16, coding: -1 } },
     '02-9-Daffodils': { '4': { robotics: 21, coding: -1 } },
     '03-9-Daffodils': { '4': { robotics: 13, coding: -1 } },
@@ -183,8 +181,8 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '39-9-Daffodils': { '4': { robotics: 13, coding: -1 } },
     '40-9-Daffodils': { '4': { robotics: 11, coding: -1 } },
     
-    // Class 9 Daisies - ORIGINAL RESULTS
-    '02-9-Daisies': { '5': { robotics: 27, coding: -1 } },
+    // Class 9 Daisies
+    '02-9-Daisies': { '5': { robotics: 3, coding: -1 } },
     '03-9-Daisies': { '5': { robotics: 3, coding: -1 } },
     '05-9-Daisies': { '5': { robotics: 37, coding: -1 } },
     '06-9-Daisies': { '5': { robotics: 16, coding: -1 } },
@@ -240,7 +238,12 @@ export function getExamForStudent(studentClass: string, studentSection: string):
 function getLocalStorageResults(): { [studentId: string]: { [examId: string]: ExamResult } } {
     if (typeof window !== 'undefined') {
         const stored = window.localStorage.getItem(RESULTS_STORAGE_KEY);
-        return stored ? JSON.parse(stored) : {};
+        // If local storage is empty, initialize it with the default results.
+        if (!stored || stored === '{}') {
+            window.localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(DEFAULT_RESULTS));
+            return DEFAULT_RESULTS;
+        }
+        return JSON.parse(stored);
     }
     return {};
 }
@@ -258,9 +261,14 @@ export function storeResult(studentRoll: string, studentClass: string, studentSe
 }
 
 export function getStoredResults(): { [studentId: string]: { [examId: string]: ExamResult } } {
+    if (typeof window === 'undefined') {
+        return DEFAULT_RESULTS;
+    }
+
     const localStorageResults = getLocalStorageResults();
     // Deep merge, with localStorageResults overriding DEFAULT_RESULTS
     const allResults = JSON.parse(JSON.stringify(DEFAULT_RESULTS));
+
     for (const studentId in localStorageResults) {
         if (!allResults[studentId]) {
             allResults[studentId] = {};
@@ -269,7 +277,7 @@ export function getStoredResults(): { [studentId: string]: { [examId: string]: E
             allResults[studentId][examId] = localStorageResults[studentId][examId];
         }
     }
-  return allResults;
+    return allResults;
 }
 
 export function getResultForStudent(studentId: string, examId: string): ExamResult | null {
