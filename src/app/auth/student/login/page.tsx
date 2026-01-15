@@ -10,8 +10,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function StudentLoginPage() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
       <Card className="w-full max-w-md bg-card/90 backdrop-blur-lg">
@@ -23,7 +30,7 @@ export default function StudentLoginPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <StudentLoginForm />
+          {isClient ? <StudentLoginForm /> : null}
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
             <Link href="/auth/student/register" className="underline text-primary">

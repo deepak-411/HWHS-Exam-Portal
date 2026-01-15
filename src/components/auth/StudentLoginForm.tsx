@@ -66,7 +66,7 @@ export default function StudentLoginForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" suppressHydrationWarning>
         <FormField
           control={form.control}
           name="rollNumber"
