@@ -148,7 +148,7 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '38-8-Daisies': { '2': { robotics: 32, coding: -1 } },
     '39-8-Daisies': { '2': { robotics: 40, coding: -1 } },
 
-    // Class 9 Daffodils
+    // Class 9 Daffodils - ORIGINAL RESULTS
     '01-9-Daffodils': { '4': { robotics: 16, coding: -1 } },
     '02-9-Daffodils': { '4': { robotics: 21, coding: -1 } },
     '03-9-Daffodils': { '4': { robotics: 13, coding: -1 } },
@@ -183,28 +183,28 @@ const DEFAULT_RESULTS: { [studentId: string]: { [examId: string]: ExamResult } }
     '39-9-Daffodils': { '4': { robotics: 13, coding: -1 } },
     '40-9-Daffodils': { '4': { robotics: 11, coding: -1 } },
     
-    // Class 9 Daisies
-    '02-9-Daisies': { '5': { robotics: 27, coding: -1 } }, // AASHVIK KADAM
-    '03-9-Daisies': { '5': { robotics: 3, coding: -1 } }, // Amey jain
-    '05-9-Daisies': { '5': { robotics: 37, coding: -1 } }, // Aniket Jadhav
-    '06-9-Daisies': { '5': { robotics: 16, coding: -1 } }, // arnav patil
-    '08-9-Daisies': { '5': { robotics: 24, coding: -1 } }, // Bhakti jain
-    '09-9-Daisies': { '5': { robotics: 0, coding: -1 } }, // bilal.khan
-    '10-9-Daisies': { '5': { robotics: 0, coding: -1 } }, // daksh umakant patil
-    '13-9-Daisies': { '5': { robotics: 0, coding: -1 } }, // harsh shinde
-    '14-9-Daisies': { '5': { robotics: 29, coding: -1 } }, // janak patel
-    '15-9-Daisies': { '5': { robotics: 29, coding: -1 } }, // Janhavi Avinash Bhoir
-    '16-9-Daisies': { '5': { robotics: 0, coding: -1 } }, // JIDNESH MOHAN SASE
-    '19-9-Daisies': { '5': { robotics: 29, coding: -1 } }, // Ketki Jitendra Talele
-    '20-9-Daisies': { '5': { robotics: 16, coding: -1 } }, // nikita mali
-    '21-9-Daisies': { '5': { robotics: 3, coding: -1 } }, // NISHANT BRAMHARAKSHAS
-    '23-9-Daisies': { '5': { robotics: 37, coding: -1 } }, // RAJ kante
-    '26-9-Daisies': { '5': { robotics: 32, coding: -1 } }, // SOHAM MARBHAL
-    '27-9-Daisies': { '5': { robotics: 27, coding: -1 } }, // Soham mishra
-    '28-9-Daisies': { '5': { robotics: 0, coding: -1 } }, // SUYASH.RAUL
-    '30-9-Daisies': { '5': { robotics: 0, coding: -1 } }, // Tanveer gaikwad
-    '33-9-Daisies': { '5': { robotics: 24, coding: -1 } }, // VANSH MUKESH DALVI
-    '35-9-Daisies': { '5': { robotics: 0, coding: -1 } }, // yuvraj patel
+    // Class 9 Daisies - ORIGINAL RESULTS
+    '02-9-Daisies': { '5': { robotics: 27, coding: -1 } },
+    '03-9-Daisies': { '5': { robotics: 3, coding: -1 } },
+    '05-9-Daisies': { '5': { robotics: 37, coding: -1 } },
+    '06-9-Daisies': { '5': { robotics: 16, coding: -1 } },
+    '08-9-Daisies': { '5': { robotics: 24, coding: -1 } },
+    '09-9-Daisies': { '5': { robotics: 0, coding: -1 } },
+    '10-9-Daisies': { '5': { robotics: 0, coding: -1 } },
+    '13-9-Daisies': { '5': { robotics: 0, coding: -1 } },
+    '14-9-Daisies': { '5': { robotics: 29, coding: -1 } },
+    '15-9-Daisies': { '5': { robotics: 29, coding: -1 } },
+    '16-9-Daisies': { '5': { robotics: 0, coding: -1 } },
+    '19-9-Daisies': { '5': { robotics: 29, coding: -1 } },
+    '20-9-Daisies': { '5': { robotics: 16, coding: -1 } },
+    '21-9-Daisies': { '5': { robotics: 3, coding: -1 } },
+    '23-9-Daisies': { '5': { robotics: 37, coding: -1 } },
+    '26-9-Daisies': { '5': { robotics: 32, coding: -1 } },
+    '27-9-Daisies': { '5': { robotics: 27, coding: -1 } },
+    '28-9-Daisies': { '5': { robotics: 0, coding: -1 } },
+    '30-9-Daisies': { '5': { robotics: 0, coding: -1 } },
+    '33-9-Daisies': { '5': { robotics: 24, coding: -1 } },
+    '35-9-Daisies': { '5': { robotics: 0, coding: -1 } },
 };
 
 
